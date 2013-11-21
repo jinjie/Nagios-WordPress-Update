@@ -1,0 +1,45 @@
+#!/bin/bash
+
+CURL=`which curl`
+BASENAME=`which basename`
+PROGNAME=`$BASENAME $0`
+
+# Exit codes
+STATE_OK=0
+STATE_WARNING=1
+STATE_CRITICAL=2
+STATE_UNKNOWN=3
+
+function print_usage
+{
+	echo "Usage: $PROGNAME <URL>" 
+}
+
+if [ ! $1 ]; then
+	print_usage
+	exit $STATE_CRITICAL
+fi
+
+result=`$CURL -s $1`
+
+if [ $? != 0 ]; then
+	echo Hi
+	exit $STATE_CRITICAL
+else
+	status=`echo $result | cut -d\# -f1`
+	text=`echo $result | cut -d\# -f2`
+
+	echo "WORDPRESS $status - $text"
+	
+	case "$status" in
+		CRITICAL)
+			exit $STATE_CRITICAL
+			;;
+		WARNING)
+			exit $STATE_WARNING
+			;;
+		OK)
+			exit $STATE_OK
+			;;
+	esac
+fi
