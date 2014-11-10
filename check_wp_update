@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CURL=`which curl`
+CURL_OPTS='--user-agent check-wp-updates-nagios-plugin'
 BASENAME=`which basename`
 PROGNAME=`$BASENAME $0`
 
@@ -20,7 +21,7 @@ if [ ! $1 ]; then
 	exit $STATE_CRITICAL
 fi
 
-result=`$CURL -s $1`
+result=`$CURL $CURL_OPTS -s $1`
 
 if [ $? != 0 ]; then
 	echo Hi
