@@ -6,10 +6,12 @@ $allowed_ips = array(
 	'127.0.0.1',
 );
 
+$remote_ip = $_SERVER['REMOTE_ADDR'];
+
 // Check if the requesting server is allowed
-if (! in_array($_SERVER['REMOTE_ADDR'], $allowed_ips))
+if (! in_array($remote_ip, $allowed_ips))
 {
-	echo 'CRITICAL#IP Not Allowed';
+	echo "CRITICAL#IP $remote_ip not allowed.";
 	exit;
 }
 
