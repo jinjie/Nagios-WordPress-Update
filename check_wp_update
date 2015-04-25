@@ -24,7 +24,7 @@ fi
 result=`$CURL $CURL_OPTS -s $1`
 
 if [ $? != 0 ]; then
-	echo Hi
+	echo 'CRITICAL - Check plugin does not work. Maybe you need to install curl.'
 	exit $STATE_CRITICAL
 else
 	status=`echo $result | cut -d\# -f1`
