@@ -6,7 +6,12 @@ $allowed_ips = array(
 	'127.0.0.1',
 );
 
-$remote_ip = $_SERVER['REMOTE_ADDR'];
+// If your Wordpress installation is behind a Proxy like Nginx use 'HTTP_X_FORWARDED_FOR'
+if(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+	$remote_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+	$remote_ip = $_SERVER['REMOTE_ADDR'];
+}
 
 // Check if the requesting server is allowed
 if (! in_array($remote_ip, $allowed_ips))
