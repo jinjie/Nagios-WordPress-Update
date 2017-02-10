@@ -13,7 +13,7 @@ STATE_UNKNOWN=3
 
 function print_usage
 {
-	echo "Usage: $PROGNAME <URL>" 
+	echo "Usage: $PROGNAME <URL>"
 }
 
 if [ ! $1 ]; then
@@ -31,7 +31,7 @@ else
 	text=`echo $result | cut -d\# -f2`
 
 	echo "WORDPRESS $status - $text"
-	
+
 	case "$status" in
 		CRITICAL)
 			exit $STATE_CRITICAL
@@ -43,4 +43,7 @@ else
 			exit $STATE_OK
 			;;
 	esac
+
+	# $result must be something unexpected (e.g. wp-version.php isn't there)
+	exit $STATE_UNKNOWN
 fi
