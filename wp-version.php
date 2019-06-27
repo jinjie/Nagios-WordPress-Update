@@ -65,18 +65,24 @@ foreach ($core->updates as $core_update)
 $plugin_available = (count($plugins->response) > 0);
 $theme_available = (count($themes->response) > 0);
 
+// Get version of latest Wordpress
+$latest_version = $core_update->current;
+
+// Get version of current Wordpress
+$current_version = $wp_version;
+
 $text = array();
 
 if ($core_available)
-	$text[] = 'Core updates available';
+	$text[] = 'Current version is (' . $current_version  . '). Update to Wordpress ' . $latest_version  . ' available.';
 
 if ($plugin_available)
-	$text[] = 'Plugin updates available';
+	$text[] = 'Plugin updates available.';
 
 if ($theme_available)
-	$text[] = 'Theme updates available';
+	$text[] = 'Theme updates available.';
 
-$status = 'OK';
+$status = 'Current version is (' . $current_version  .  '). No core, plugin or theme updates available.';
 
 if ($core_available)
 {
