@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CURL=`which curl`
-CURL_OPTS='--user-agent check-wp-updates-nagios-plugin --insecure'
+CURL_OPTS='-s --user-agent check-wp-updates-nagios-plugin --insecure'
 BASENAME=`which basename`
 PROGNAME=`$BASENAME $0`
 
