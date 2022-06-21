@@ -86,4 +86,4 @@ if ($core_available) {
     $status = 'WARNING';
 }
 
-echo $status . '#' . implode($text, ';');
+echo $status . '#' . implode(';', $text);
