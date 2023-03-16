@@ -3,6 +3,8 @@ Nagios-WordPress-Update
 
 A Nagios plugin to check for WordPress version updates on a remote server without the use of NRPE.
 
+[Nagios Exchange](https://exchange.nagios.org/directory/Plugins/CMS-and-Blog-Software/Wordpress/Check-WordPress-Update/details)
+
 How to use:
 
 - Upload wp-version.php to your WordPress root installation
